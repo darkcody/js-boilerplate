@@ -1,0 +1,49 @@
+div#userAPI {
+  background: #fff; // display: inline-block;
+  border: 1px solid #d8d8d8;
+  padding: 5px;
+  table {
+    border-bottom: 1px solid #d3d3d3;
+  }
+  tr:hover {
+    background: lightblue;
+    color: black;
+  }
+  tr td {
+    border-bottom: 1px solid #d3d3d3;
+    margin: 0;
+    padding: 5px;
+  }
+  tr:last-child td {
+    border-bottom: none;
+  }
+}
+
+div#env-toolbar>div {
+  color: #4f4b4b;
+  padding: 5px;
+  text-align: center;
+  border-bottom: 1px solid #d8d8d8;
+  font-weight: bold;
+  font-size: 90%;
+}
+
+div#envDump {
+  margin: 20px 0 0 0;
+  background: #fff;
+  padding: 5px;
+  border: 1px solid #d8d8d8;
+  #expand-dump {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px;
+    display: block;
+  }
+  #env-expand{
+    display: inline-block;
+    border-left: 2px solid #d8d8d8;
+    padding-left: 4px;
+    margin-left: 8px;
+    overflow: hidden;
+  }
+}
