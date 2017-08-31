@@ -71,9 +71,16 @@ Initial mock APIs are included by default and switch based on environment variab
 
 For the sake of testing, node processes which are stored in process.env are exposed in runtime by webpack by the `DefinePlugin` value which is exported for switch statements in the DOM. These currently are passed thru the NPM commands as `NODE_ENV=` for development or production.
 
+#### CI Integration
+
+The continuous integration is validated thru TravisCI as part of the normal github workflow. The local storage reference for TravisCI is stored in the `.travis.yml` file.
+
 #### Production Builds
 
 The `npm run build` starts the process of a deployment build. This starts by cleaning `dist/` folder in the `clean-dist` command as part of the `prebuild` command. The subsequent tasks then include `build` and `postbuild` commands which follow the normal methods or compiling thru express and bundled with the production webpack file `webpack.config.prod.js` The webpack settings for production include specific tasks such as bundle splitting, cache bustings, and compression. 
+
+
+
 
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
