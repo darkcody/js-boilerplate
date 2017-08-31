@@ -60,3 +60,4 @@ typings/
 /dist
 .DS_Store
 /src/api/db.json
+dist/*

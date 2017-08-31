@@ -1,7 +1,8 @@
 ## JS Boilerplate for PS
 
-
 This application is intended as a toolkit for the Node.js hosting platform. It includes a considerable amount of standard build tools and core configuration.  
+
+<!-- v.2 August 31 -->
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
 
@@ -25,7 +26,6 @@ If you ran `npm run build` for production, you will see:
 - A toolbar signifying you built for production 
 - The rendered API data from the external API endpoint
 - A link to toggle the variables stored in `process.env` 
-
 
 ![](http://content.screencast.com/users/BedimStudios/folders/Jing/media/d089516e-bfe7-4e80-8df5-88b55bbebc33/00002440.png "")
 
