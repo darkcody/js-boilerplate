@@ -26,3 +26,8 @@ envToolbar();
 
 // Populate environment block. 
 envDump();
+
+/**
+ * https://jsonplaceholder.typicode.com/posts 
+ * https://jsonplaceholder.typicode.com/users 
+ */
