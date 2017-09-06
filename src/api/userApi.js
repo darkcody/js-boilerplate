@@ -1,19 +1,20 @@
 import 'whatwg-fetch';
-import getBaseUrl from './baseUrl';
+import {
+  environment
+} from '../../buildScripts/envDetect.js';
 
-const baseUrl = getBaseUrl();
+const baseUrl = (environment === 'development') ? 'http://localhost:4201/users' : 'http://beta.json-generator.com/api/json/get/4yJfmmFKm';
 
 export function getUsers() {
   return get('users');
 }
 
 function deleteUser(id) {
-  // console.log(`users/${id}`);
-  return del(`users/${id}`);
+  return del(`/${id}`);
 }
 
-function get(url) {
-  return fetch(baseUrl + url).then(onSuccess, onError);
+function get() {
+  return fetch(baseUrl).then(onSuccess, onError);
 }
 
 function del(url) {
@@ -29,20 +30,19 @@ function onSuccess(response) {
 
 export function populateAPIDOM(result) {
 
-  global.document.getElementById('userAPI').innerHTML = '<h4>API Data from: ' + baseUrl + 'users';
+  global.document.getElementById('userAPI').innerHTML = '<h4>API Data from: ' + baseUrl;
   global.document.getElementById('userAPI').innerHTML += '</h4><table><tbody id="users"></tbody></table>';
 
   let usersBody = "";
+  let deleteOption = (environment !== 'development') ? 'style="display:none;"' : '';
+
   result.forEach(user => {
-
-    // console.log(user.attributes['first-name']);
-
     usersBody += `<tr>
         <td>${user.id}</td>
         <td>${user.attributes['first-name']}</td>
         <td>${user.attributes['last-name']}</td>
         <td>${user.attributes.email}</td>
-        <td><a href="#" data-id="${user.id}" class="deleteUser">Delete</a></td>
+        <td ${deleteOption}><a href="#" data-id="${user.id}" class="deleteUser">Delete</a></td>
         </tr>`
   });
 

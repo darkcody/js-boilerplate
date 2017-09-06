@@ -1,8 +1,10 @@
 import jsonServer from 'json-server';
-import {Serializer as JSONAPISerializer} from 'jsonapi-serializer';
+import {
+  Serializer as JSONAPISerializer
+} from 'jsonapi-serializer';
 
 let UserSerializer = new JSONAPISerializer('users', {
-  attributes: ['firstName', 'lastName', 'email']
+  attributes: ['id', 'firstName', 'lastName', 'email']
 });
 
 let router = jsonServer.router('src/api/db.json');
