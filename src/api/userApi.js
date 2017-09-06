@@ -8,6 +8,7 @@ export function getUsers() {
 }
 
 function deleteUser(id) {
+  // console.log(`users/${id}`);
   return del(`users/${id}`);
 }
 
@@ -28,16 +29,19 @@ function onSuccess(response) {
 
 export function populateAPIDOM(result) {
 
-  global.document.getElementById('userAPI').innerHTML = '<h4>API Data from: ' + baseUrl + 'users' ;
+  global.document.getElementById('userAPI').innerHTML = '<h4>API Data from: ' + baseUrl + 'users';
   global.document.getElementById('userAPI').innerHTML += '</h4><table><tbody id="users"></tbody></table>';
 
   let usersBody = "";
   result.forEach(user => {
+
+    // console.log(user.attributes['first-name']);
+
     usersBody += `<tr>
         <td>${user.id}</td>
-        <td>${user.firstName}</td>
-        <td>${user.lastName}</td>
-        <td>${user.email}</td>
+        <td>${user.attributes['first-name']}</td>
+        <td>${user.attributes['last-name']}</td>
+        <td>${user.attributes.email}</td>
         <td><a href="#" data-id="${user.id}" class="deleteUser">Delete</a></td>
         </tr>`
   });

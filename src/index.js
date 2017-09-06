@@ -14,7 +14,7 @@ import {
 getUsers().then(result => {
 
   // Populate initial API users.
-  populateAPIDOM(result);
+  populateAPIDOM(result.data);
 
   // Remove from local faux db.
   removeAPIUsers(global.document.getElementsByClassName('deleteUser'));
@@ -26,3 +26,8 @@ envToolbar();
 
 // Populate environment block. 
 envDump();
+
+/**
+ * https://jsonplaceholder.typicode.com/posts 
+ * https://jsonplaceholder.typicode.com/users 
+ */
