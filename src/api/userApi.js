@@ -4,12 +4,12 @@ import getBaseUrl from './baseUrl';
 const baseUrl = getBaseUrl();
 
 export function getUsers() {
-  return get('data');
+  return get('users');
 }
 
 function deleteUser(id) {
-  // console.log(`data/${id}`);
-  return del(`data/${id}`);
+  // console.log(`users/${id}`);
+  return del(`users/${id}`);
 }
 
 function get(url) {
@@ -29,7 +29,7 @@ function onSuccess(response) {
 
 export function populateAPIDOM(result) {
 
-  global.document.getElementById('userAPI').innerHTML = '<h4>API Data from: ' + baseUrl + 'data';
+  global.document.getElementById('userAPI').innerHTML = '<h4>API Data from: ' + baseUrl + 'users';
   global.document.getElementById('userAPI').innerHTML += '</h4><table><tbody id="users"></tbody></table>';
 
   let usersBody = "";
@@ -38,7 +38,7 @@ export function populateAPIDOM(result) {
     // console.log(user.attributes['first-name']);
 
     usersBody += `<tr>
-        <td>${user.attributes.id}</td>
+        <td>${user.id}</td>
         <td>${user.attributes['first-name']}</td>
         <td>${user.attributes['last-name']}</td>
         <td>${user.attributes.email}</td>

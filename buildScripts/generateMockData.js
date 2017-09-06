@@ -7,19 +7,9 @@ import {
 import fs from 'fs';
 import chalk from 'chalk';
 
-const json = jsf(schema); // JSON.stringify()
+const json = JSON.stringify(jsf(schema));
 
-// Converting to JSON API specs 
-var json_nested = json.users;
-var JSONAPISerializer = require('jsonapi-serializer').Serializer;
-var UserSerializer = new JSONAPISerializer('users', {
-  attributes: ['id', 'firstName', 'lastName', 'email']
-});
-
-var users = UserSerializer.serialize(json_nested);
-var stringify_users = JSON.stringify(users);
-
-fs.writeFile("./src/api/db.json", stringify_users, function (err) {
+fs.writeFile("./src/api/db.json", json, function (err) {
   if (err) {
     return console.log(chalk.red(err));
   } else {
