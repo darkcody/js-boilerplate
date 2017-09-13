@@ -11,7 +11,7 @@ This application is intended as a toolkit for the Node.js hosting platform. It i
 - Install [node.js](https://nodejs.org)
 - Run `npm install`
 - To build the development app: `npm start`
-- To build the development app: `npm run build`
+- To build the production app: `npm run build`
 
 #### What will I see when I stand up the application?
 
