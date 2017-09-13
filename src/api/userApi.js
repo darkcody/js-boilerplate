@@ -1,24 +1,24 @@
 import 'whatwg-fetch';
-import {
-  environment
-} from '../../buildScripts/envDetect.js';
+import config from '../../app.config';
 
-const baseUrl = (environment === 'development') ? 'http://localhost:4201/users' : 'http://beta.json-generator.com/api/json/get/4yJfmmFKm';
-
-export function getUsers() {
-  return get('users');
+export function getUsers(id) {
+  return get('user', id);
 }
 
 function deleteUser(id) {
   return del(`/${id}`);
 }
 
-function get() {
-  return fetch(baseUrl).then(onSuccess, onError);
+function get(resource, id) {
+  let uri = '/api' + config.resourcePaths[resource];
+  if (id) {
+    uri += `/${id}`;
+  }
+  return fetch(uri).then(onSuccess, onError);
 }
 
 function del(url) {
-  const request = new Request(baseUrl + url, {
+  const request = new Request(config.baseUrl + url, {
     method: 'DELETE'
   });
   return fetch(request).then(onSuccess, onError);
@@ -30,19 +30,18 @@ function onSuccess(response) {
 
 export function populateAPIDOM(result) {
 
-  global.document.getElementById('userAPI').innerHTML = '<h4>API Data from: ' + baseUrl;
+  global.document.getElementById('userAPI').innerHTML = '<h4>API Data from: ' + config.baseUrl;
   global.document.getElementById('userAPI').innerHTML += '</h4><table><tbody id="users"></tbody></table>';
 
   let usersBody = "";
-  let deleteOption = (environment !== 'development') ? 'style="display:none;"' : '';
+  let deleteOption = (config.environment !== 'development') ? 'style="display:none;"' : '';
 
   result.forEach(user => {
     usersBody += `<tr>
         <td>${user.id}</td>
-        <td>${user.attributes['first-name']}</td>
-        <td>${user.attributes['last-name']}</td>
-        <td>${user.attributes.email}</td>
-        <td ${deleteOption}><a href="#" data-id="${user.id}" class="deleteUser">Delete</a></td>
+        <td>${user.attributes['name']}</td>
+        <td>${user.attributes.mail}</td>
+        <!--<td ${deleteOption}><a href="#" data-id="${user.id}" class="deleteUser">Delete</a></td>-->
         </tr>`
   });
 
