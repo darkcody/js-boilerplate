@@ -14,7 +14,7 @@
     "sass": "node-sass --watch src/sass -o src --importer node_modules/node-sass-import",
     "build-dev": "babel-node buildScripts/srcServer.js",
     "env-detect": "babel-node buildScripts/envDetect.js",
-    "lint": "esw webpack.config.* scr buildScripts --color",
+    "lint": "esw webpack.config.* src buildScripts --color",
     "lint:watch": "npm run lint -- --watch",
     "security-check": "nsp check",
     "test": "mocha --reporter progress buildScripts/testSetup.js \"src/**/*.test.js\"",
