@@ -23,5 +23,5 @@ jsonServer
   .use(jsonServer.defaults())
   .use(router)
   .listen(4201, function () {
-    console.log('Mock API Server is running.');
+    console.log('Mock API Server is running.'); // eslint-disable-line no-console
   });
