@@ -1,16 +1,21 @@
-export const environment = process.env.NODE_ENV;
+export const environment = (process.env.NODE_ENV || '');
+export const pipelines_info = (process.env.PIPELINE_ENV || '');
 
 export function envToolbar() {
 
-  let color = '';
+  let color = (environment === 'development') ? "#e0f0f9" : "#d7f4d2";
+  let pipelines_data;
 
-  if (environment === 'development') {
-    color = "#e0f0f9"
+  if (pipelines_info) {
+    pipelines_data += " // Pipelines Cloud Site :: " + (process.env.PIPELINE_CLOUD_SITE || 'n/a');
+    pipelines_data += " // Pipelines Job ID :: " + (process.env.PIPELINES_JOB_ID || 'n/a');
+    pipelines_data += " // Application ID :: " + (process.env.PIPELINES_APPLICATION_ID || 'n/a');
+
   } else {
-    color = "#d7f4d2"
+    pipelines_data = ' // local build';
   }
 
-  let markup = '<div style="background-color:' + color + ';"> environment :: ' + environment + ' </div>'
+  let markup = '<div style="background-color:' + color + ';"> environment :: ' + environment + pipelines_data + ' </div>'
   global.document.getElementById('env-toolbar').innerHTML = markup;
 
 }
@@ -30,7 +35,7 @@ export function envDump() {
   let click = document.getElementById("expand-dump"),
     env_expand = document.getElementById("env-expand");
 
-  env_expand.style.display = 'none'; // onload 
+  env_expand.style.display = 'none'; // onload
 
   click.addEventListener("click", function () {
     if (env_expand.style.display == 'none') {

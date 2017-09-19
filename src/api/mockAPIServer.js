@@ -15,13 +15,12 @@ router.render = (req, res) => {
   if (req.path.includes('/users') && data) {
     res.json(UserSerializer.serialize(data));
   }
-
 }
 
 jsonServer
   .create()
   .use(jsonServer.defaults())
   .use(router)
-  .listen(4201, function () {
-    console.log('Mock API Server is running.'); // eslint-disable-line no-console
+  .listen((process.env.PORT || 8081), function () {
+    console.log('Mock API Server is running.');
   });

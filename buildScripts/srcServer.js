@@ -6,19 +6,9 @@ import config from '../webpack.config.dev';
 import * as auth from './authenticationController';
 import * as proxy from './apiProxyController';
 
-const port = 4200;
+const port = (process.env.PORT || 8080);
 const app = express();
 const compiler = webpack(config);
-
-// Environment :: Production 
-// process.env.NODE_ENV = 'development';
-// console.log('- - - - - ');
-// console.log(process.env);
-
-// envToolbar();
- 
-/*eslint-disable no-console */
-
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,

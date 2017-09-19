@@ -5,7 +5,7 @@ import compression from 'compression';
 import * as auth from './authenticationController';
 import * as proxy from './apiProxyController';
 
-const port = 4200;
+const port = (process.env.PORT || 8080);
 const app = express();
 
 app.use(compression());
