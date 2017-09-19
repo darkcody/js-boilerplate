@@ -8,6 +8,7 @@ export default {
   apiPrefix: '/jsonapi',
   resourcePaths: {
     user: '/user/user',
-    page: '/node/page'
+    userRole: 'user_role/user_role',
+    page: '/node/page',
   }
 }

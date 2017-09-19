@@ -23,20 +23,26 @@ h4 {
   padding: 5px 0;
   margin: 0; }
 
-div#userAPI {
+div#userAPI,
+div#pageAPI {
   background: #fff;
   border: 1px solid #d8d8d8;
-  padding: 5px; }
-  div#userAPI table {
+  padding: 5px;
+  margin: 20px 0 0 0; }
+  div#userAPI table,
+  div#pageAPI table {
     border-bottom: 1px solid #d3d3d3; }
-  div#userAPI tr:hover {
+  div#userAPI tr:hover,
+  div#pageAPI tr:hover {
     background: lightblue;
     color: black; }
-  div#userAPI tr td {
+  div#userAPI tr td,
+  div#pageAPI tr td {
     border-bottom: 1px solid #d3d3d3;
     margin: 0;
     padding: 5px; }
-  div#userAPI tr:last-child td {
+  div#userAPI tr:last-child td,
+  div#pageAPI tr:last-child td {
     border-bottom: none; }
 
 div#env-toolbar > div {
