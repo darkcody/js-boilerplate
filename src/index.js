@@ -1,25 +1,28 @@
 import './main.css';
 
 import {
-  getUsers,
-  populateAPIDOM,
+  getContent,
+  updateContentLists,
   removeAPIUsers
-} from './api/userApi';
+} from './api/api';
 
 import {
   envToolbar, envDump
 } from '../buildScripts/envDetect.js';
 
 // Populate table of users via API call.
-getUsers().then(result => {
+let typesToGet = ['user', 'page'];
+typesToGet.forEach(type => {
+  getContent(type).then(result => {
 
-  // Populate initial API users.
-  populateAPIDOM(result.data);
+    // Populate initial API users.
+    updateContentLists(result.shift(), type);
 
-  // Remove from local faux db.
-  removeAPIUsers(global.document.getElementsByClassName('deleteUser'));
-
-});
+    // @todo: this isn't configured to work with the drupal jsonapi.
+    // Remove from local faux db.
+    // removeAPIUsers(global.document.getElementsByClassName('deleteUser'));
+  });
+})
 
 // Populate environment toolbar. 
 envToolbar();
