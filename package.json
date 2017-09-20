@@ -24,9 +24,10 @@
     "start-mockapi": "babel-node src/api/mockAPIServer.js",
     "clean-dist": "rimraf ./dist && mkdir dist",
     "build-client": "babel-node buildScripts/build.js",
-    "build-server": "babel ./app.config.js buildScripts/authenticationController.js buildScripts/apiProxyController.js buildScripts/distServer.js -d dist --presets env",
+    "build-server": "babel app.config.js buildScripts/* -d dist --presets env",
     "prebuild": "npm run clean-dist",
     "build": "NODE_ENV=production npm run build-client && npm run build-server",
+    "postbuild": "cp .env dist/.env 2>/dev/null || :",
     "start": "node dist/buildScripts/distServer.js"
   },
   "devDependencies": {
